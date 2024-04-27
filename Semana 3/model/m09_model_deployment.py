@@ -9,7 +9,7 @@ import os
 
 def predict_price(year,mileage,state,make,model):
 
-    clf = joblib.load(os.path.dirname(__file__) + '/CarPriceRegressor.pkl') 
+    Rgr = joblib.load(os.path.dirname(__file__) + '/CarPriceRegressor.pkl') 
 
     # Create features
     
@@ -53,7 +53,7 @@ def predict_price(year,mileage,state,make,model):
 
 
     # Make prediction
-    p1 = clf.predict(df)
+    p1 = Rgr.predict(df)
 
     return p1
 
