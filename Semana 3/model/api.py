@@ -52,7 +52,7 @@ parser.add_argument(
     'model', 
     type=str, 
     required=True, 
-    help='URL to be analyzed', 
+    help="Car's Model", 
     location='args')
 
 
