@@ -1,6 +1,4 @@
 0
-Year
-Mileage
 Make_Audi
 Make_BMW
 Make_Bentley
@@ -37,6 +35,7 @@ Make_Tesla
 Make_Toyota
 Make_Volkswagen
 Make_Volvo
+Mileage
 Model_1500
 Model_200L
 Model_200S
@@ -324,3 +323,4 @@ State_WA
 State_WI
 State_WV
 State_WY
+Year

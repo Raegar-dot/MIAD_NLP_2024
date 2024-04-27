@@ -55,6 +55,8 @@ def predict_price(year,mileage,state,make,model):
     columnas_enteras.remove('Mileage')
     for col in columnas_enteras:
         df[col] = df[col].astype(int)
+    
+    df = df.sort_index(axis=1)
 
 
 
