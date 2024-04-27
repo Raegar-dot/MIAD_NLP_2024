@@ -20,7 +20,7 @@ def predict_price(year,mileage,state,make,model):
     var_model = model
     var_model_short =  var_model[:4]
     var_year = int(year)
-    var_mileage = int(mileage)
+    var_mileage = float(mileage)
     media = 55072.956895
     desviacion = 40880.96774371
     
@@ -48,7 +48,13 @@ def predict_price(year,mileage,state,make,model):
                 df.loc[0, col] = 0
 
     df['Year'] = var_year
+
     df['Mileage'] = (var_mileage-media)/desviacion
+
+    columnas_enteras = list(df.columns)
+    columnas_enteras.remove('Mileage')
+    for col in columnas_enteras:
+        df[col] = df[col].astype(int)
 
 
 
