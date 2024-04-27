@@ -58,6 +58,8 @@ def predict_price(year,mileage,state,make,model):
     
     df = df.sort_index(axis=1)
 
+    df.columns = df.columns.str.upper()
+
 
 
     # Make prediction
