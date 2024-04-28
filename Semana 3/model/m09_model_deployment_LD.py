@@ -25,7 +25,7 @@ def predict_price(year,mileage,state,make,model):
 
     var_year = int(year)
     var_mileage = float(mileage)
-    var_state = int(state_dict[state.upper()])
+    var_state = int(state_dict[' '+ state.upper()])
     var_make = int(make_dict[make.upper()])
     var_model = int(model_dict[model.upper()])
     #media = 55072.956895
