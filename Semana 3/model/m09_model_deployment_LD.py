@@ -34,16 +34,16 @@ def predict_price(year,mileage,state,make,model):
     
     #df['Mileage'] = (var_mileage-media)/desviacion
 
-    df = pd.DataFrame(columns=['Make', 'Mileage', 'Model','State','Year'])
+    df = pd.DataFrame(columns=['Year', 'Mileage','State','Make', 'Model'])
     
-    df['Make'] = var_make
-    df['Mileage'] = var_mileage
-    df['Model'] = var_model
-    df['State'] = var_state
     df['Year'] = var_year
-
+    df['Mileage'] = var_mileage
+    df['State'] = var_state
+    df['Make'] = var_make
+    df['Model'] = var_model
     
-    df = df.sort_index(axis=1)
+    
+
 
 
     # Make prediction
