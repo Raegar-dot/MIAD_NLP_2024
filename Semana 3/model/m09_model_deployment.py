@@ -13,7 +13,7 @@ def predict_price(year,mileage,state,make,model):
 
     # Create features
     
-    col_names = pd.read_csv('col_names.csv')['0'].to_list()
+    col_names = pd.read_csv('model/col_names.csv')['0'].to_list()
     
     var_state = state 
     var_make = make
