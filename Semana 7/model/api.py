@@ -53,8 +53,10 @@ class PhishingApi(Resource):
     def get(self):
         args = parser.parse_args()
         
+        resultado = predict_genre(args['year'],args['title'],args['plot'])
+        
         return {
-         "result": predict_genre(args['year'],args['title'],args['plot'])
+         "result": resultado
         }, 200
     
     
