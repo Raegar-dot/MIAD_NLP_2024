@@ -25,8 +25,8 @@ def lemmatize_as_verb(text):
 def predict_genre(vyear,vtitle,vplot):
 
     clf = joblib.load(os.path.dirname(__file__) + '/model_project2_v1.pkl') 
+    vectorizer = joblib.load(os.path.dirname(__file__) + '/vectorizer.pkl') 
     
-    vectorizer = TfidfVectorizer(tokenizer=lemmatize_as_verb, stop_words='english', max_features=1000, ngram_range = (1,3))
 
     # Create features
     var_year = int(vyear)
