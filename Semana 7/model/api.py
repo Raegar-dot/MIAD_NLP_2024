@@ -61,7 +61,7 @@ class PhishingApi(Resource):
         'p_Sci-Fi', 'p_Short', 'p_Sport', 'p_Thriller', 'p_War', 'p_Western']
 
         return {
-         "result": pd.DataFrame(resultado, columns=cols)
+         "result": pd.DataFrame(resultado, columns=cols).to_dict(orient='list')
         }, 200
     
     
