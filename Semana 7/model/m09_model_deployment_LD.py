@@ -44,7 +44,7 @@ def predict_genre(vyear,vtitle,vplot):
     #df['Mileage'] = (var_mileage-media)/desviacion
 
     #df = pd.DataFrame(columns=['Year', 'Mileage','State','Make', 'Model'])
-    X_test_dtm = vectorizer.transform(var_plot)
+    X_test_dtm = vectorizer.transform(pd.Series([var_plot]))
 
     data = {
         'year': [var_year],
