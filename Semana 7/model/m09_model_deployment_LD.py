@@ -4,25 +4,31 @@ import pandas as pd
 import joblib
 import sys
 import os
+from sklearn.feature_extraction.text import TfidfVectorizer
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
 
+#Asegurarse de tener descargados los recursos necesarios de NLTK
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('punkt')
+
+
+
+def lemmatize_as_verb(text):
+    words = nltk.word_tokenize(text)
+    lemmatizer = WordNetLemmatizer()
+    return [lemmatizer.lemmatize(w, pos='v') for w in words]
 
 
 def predict_genre(vyear,vtitle,vplot):
 
     clf = joblib.load(os.path.dirname(__file__) + '/model_project2_v1.pkl') 
+    
+    vectorizer = TfidfVectorizer(tokenizer=lemmatize_as_verb, stop_words='english', max_features=1000, ngram_range = (1,3))
 
     # Create features
-    
-    # make_code = pd.read_csv('df_make_code.csv')
-    # make_dict = make_code.set_index('Make')['Code'].to_dict()
-
-    # model_code = pd.read_csv('df_model_code.csv')
-    # model_dict = model_code.set_index('Model')['Code'].to_dict()
-
-    # state_code = pd.read_csv('df_state_code.csv')
-    # state_dict = state_code.set_index('State')['Code'].to_dict()
-    
-
     var_year = int(vyear)
     var_title = str(vtitle)
     var_plot = str(vplot)
@@ -38,7 +44,8 @@ def predict_genre(vyear,vtitle,vplot):
     #df['Mileage'] = (var_mileage-media)/desviacion
 
     #df = pd.DataFrame(columns=['Year', 'Mileage','State','Make', 'Model'])
-    
+    X_test_dtm = vectorizer.transform(var_plot)
+
     data = {
         'year': [var_year],
         'title': [var_title],
@@ -50,7 +57,7 @@ def predict_genre(vyear,vtitle,vplot):
 
 
     # Make prediction
-    p1 = clf.predict(df)
+    p1 = clf.predict(X_test_dtm)
 
     return p1
 
