@@ -41,15 +41,6 @@ def predict_genre(vyear,vtitle,vplot):
 
     X_test_dtm = vectorizer.transform(pd.Series([var_plot]))
 
-    data = {
-        'year': [var_year],
-        'title': [var_title],
-        'plot': [var_plot], 
-        }
-    df = pd.DataFrame(data)
-
-    print(df)
-
 
     # Make prediction
     p1 = clf.predict(X_test_dtm)
